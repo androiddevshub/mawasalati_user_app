@@ -3,6 +3,7 @@ package com.example.mawasalatiuserapp.utils;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.widget.Toast;
 
 import com.example.mawasalatiuserapp.view.activities.LoginActivity;
 
@@ -75,6 +76,10 @@ public class AppUtils {
 
         // Staring Login Activity
         ctx.startActivity(i);
+    }
+
+    public void showToast(String msg){
+        Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show();
     }
 
 }
