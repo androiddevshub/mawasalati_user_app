@@ -7,34 +7,183 @@
     tools:context=".view.activities.MainActivity"
     android:background="#F8F8F8">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Dashboard"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:id="@+id/txt_dashboard"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:text="Hello"
-        android:layout_below="@id/txt_dashboard"
+        android:text="Welcome"
         android:layout_marginTop="20dp"
+        android:textSize="30sp"
         android:layout_centerHorizontal="true"
-        android:id="@+id/hello_message"/>
+        android:id="@+id/tv_welcome_msg"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Logout"
+        android:layout_below="@id/tv_welcome_msg"
         android:id="@+id/btn_logout"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/hello_message"
         android:layout_marginTop="30dp"/>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_logout"
+        android:background="@drawable/custom_border"
+        android:gravity="center"
+        android:id="@+id/search_city_view"
+        android:layout_margin="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:id="@+id/icon_city_origin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_city"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/icon_city_origin"
+                android:id="@+id/txt_origin"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:text="Origin"/>
+
+
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:layout_width="match_parent"
+                android:layout_below="@id/txt_origin"
+                android:layout_height="50dp"
+
+                android:layout_toRightOf="@id/icon_city_origin"
+                android:id="@+id/spinner_origin_city"
+                android:background="@drawable/white_background" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#939393"/>
+
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/icon_city_destination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_city"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/txt_destination"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:layout_toRightOf="@id/icon_city_destination"
+                android:text="Destination"/>
+
+
+            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_below="@id/txt_destination"
+                android:layout_toRightOf="@id/icon_city_destination"
+                android:id="@+id/spinner_destination_city"
+                android:background="@drawable/white_background"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/custom_border"
+        android:layout_below="@id/search_city_view"
+        android:paddingLeft="30dp"
+        android:id="@+id/journey_date_layout"
+        android:layout_margin="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/txt_journey_date"
+            android:layout_margin="10dp"
+            android:text="Journey Date"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_journey_date"
+            android:id="@+id/tv_journey_date"
+            android:text="01"
+            android:textSize="35sp"
+            android:layout_margin="10dp" />
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_journey_date"
+            android:layout_toRightOf="@id/tv_journey_date"
+            android:id="@+id/tv_journey_month"
+            android:layout_marginTop="15dp"
+            android:text="April"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_journey_month"
+            android:layout_toRightOf="@id/tv_journey_date"
+            android:textColor="@android:color/black"
+            android:id="@+id/tv_journey_day"
+            android:text="Sunday" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/tv_journey_today"
+            android:text="TODAY"
+            android:textSize="35sp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="50dp"/>
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:text="Search Buses"
+        android:textAllCaps="false"
+        android:layout_below="@id/journey_date_layout"
+        android:id="@+id/btn_search_buses"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_centerHorizontal="true"/>
+
 
 
 </RelativeLayout>
