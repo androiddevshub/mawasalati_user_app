@@ -30,7 +30,7 @@ public class ApiClient {
             retrofit = new Retrofit.Builder()
                     .client(buildClient())
                     .addConverterFactory(GsonConverterFactory.create())
-                    .baseUrl(REMOTE_BASE_URL)
+                    .baseUrl(LOCAL_BASE_URL)
                     .build();
         }
         return retrofit;

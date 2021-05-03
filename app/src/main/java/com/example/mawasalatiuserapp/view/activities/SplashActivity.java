@@ -17,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        appUtils = new AppUtils(getApplicationContext());
+        appUtils = new AppUtils(getApplicationContext(), this);
 
 
         Thread myThread = new Thread(){

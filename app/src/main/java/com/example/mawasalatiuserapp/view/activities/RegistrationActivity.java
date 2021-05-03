@@ -40,7 +40,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         login_here_text = findViewById(R.id.txt_login_here);
 
-        appUtils = new AppUtils(getApplicationContext());
+        appUtils = new AppUtils(getApplicationContext(), this);
 
         progressDialog = new ProgressDialog(RegistrationActivity.this);
 

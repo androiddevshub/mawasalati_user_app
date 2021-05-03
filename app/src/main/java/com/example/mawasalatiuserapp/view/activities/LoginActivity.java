@@ -32,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText etEmail, etPassword;
     private String email, password;
-    private AppUtils appUtils;
+
     private Button btnLogin;
+    private AppUtils appUtils;
     private ProgressDialog progressDialog;
 
     @Override
@@ -42,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         progressDialog = new ProgressDialog(LoginActivity.this);
-        appUtils = new AppUtils(getApplicationContext());
+        appUtils = new AppUtils(getApplicationContext(), this);
 
         etEmail = findViewById(R.id.et_login_email);
         etPassword = findViewById(R.id.et_login_password);

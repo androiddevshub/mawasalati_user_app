@@ -43,7 +43,10 @@ public class MainActivity extends AppCompatActivity {
     private SearchableSpinner spinnerOriginCity, spinnerDestinationCity;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private TextView tvWelcomeMsg;
+    String dateStr, origin, destination;
+    private ArrayAdapter originCitiesAdapter, destinationCitiesAdapter;
 
+    private Button btnSearchBuses;
     public static final String[] MONTHS = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
 
@@ -55,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
             "Interview prep", "Algorithms",
             "DSA with java", "OS" };
 
-    ArrayList<String> originCityArrayList = new ArrayList<>();
-    ArrayList<String> destinationCityArrayList = new ArrayList<>();
+    ArrayList<String> originCityArrayList;
+    ArrayList<String> destinationCityArrayList;
     private TextView tvJourneyDate, tvJourneyDay, tvJourneyMonth, tvJourneyToday;
 
     @Override
@@ -64,14 +67,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        appUtils = new AppUtils(getApplicationContext());
+        appUtils = new AppUtils(getApplicationContext(), this);
         userDetails = appUtils.getUserDetails();
 
 //        userName = findViewById(R.id.hello_message);
         btnLogout = findViewById(R.id.btn_logout);
         cityListFun();
         String name = userDetails.get(AppUtils.KEY_USER_NAME);
-        String id =  userDetails.get(AppUtils.KEY_USER_ID);
+        String token =  userDetails.get(AppUtils.KEY_USER_TOKEN);
 
 
         spinnerOriginCity = findViewById(R.id.spinner_origin_city);
@@ -81,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
         tvJourneyMonth = findViewById(R.id.tv_journey_month);
         tvJourneyToday = findViewById(R.id.tv_journey_today);
         tvWelcomeMsg = findViewById(R.id.tv_welcome_msg);
-
-
+        btnSearchBuses = findViewById(R.id.btn_search_buses);
 
 
 
@@ -92,10 +94,10 @@ public class MainActivity extends AppCompatActivity {
         spinnerOriginCity.setOnItemSelectedListener(onCityOriginSelectedListener);
         spinnerDestinationCity.setOnItemSelectedListener(onCityDestinationSelectedListener);
 
-//        userName.setText("Hello, "+name + ": "+ id);
+
 
         setTodayDate();
-        tvWelcomeMsg.setText("Welcome, "+ name);
+        tvWelcomeMsg.setText("Welcome, "+ name + " : "+ token);
 
         tvJourneyToday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,13 +119,29 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnSearchBuses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ScheduledBusActivity.class);
+                intent.putExtra("date", dateStr);
+                intent.putExtra("origin", origin);
+                intent.putExtra("destination", destination);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+
     }
 
     private AdapterView.OnItemSelectedListener onCityOriginSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-            Log.v("Spinner City Origin", courses1[position]);
+
+            origin = originCityArrayList.get(position);
         }
 
         @Override
@@ -135,7 +153,8 @@ public class MainActivity extends AppCompatActivity {
     private AdapterView.OnItemSelectedListener onCityDestinationSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Log.v("Spinner City Dest", courses1[position]);
+
+            destination = destinationCityArrayList.get(position);
         }
 
         @Override
@@ -168,14 +187,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setSpinnerData(){
-        ArrayAdapter originCitiesAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, originCityArrayList);
-        ArrayAdapter destinationCitiesAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, destinationCityArrayList);
+        originCitiesAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, originCityArrayList);
+        destinationCitiesAdapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, destinationCityArrayList);
 
         originCitiesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         destinationCitiesAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         spinnerOriginCity.setAdapter(originCitiesAdapter);
+
         spinnerDestinationCity.setAdapter(destinationCitiesAdapter);
+
+        origin = String.valueOf(originCitiesAdapter.getItem(0));
+        destination = String.valueOf(destinationCitiesAdapter.getItem(0));
+
     }
 
     private void setTodayDate(){
@@ -191,6 +215,9 @@ public class MainActivity extends AppCompatActivity {
         tvJourneyDate.setText(mDay+ "");
         tvJourneyDay.setText(dayOfWeek);
         tvJourneyMonth.setText(MONTHS[mMonth]);
+
+        dateStr = getDateString(mDay, mMonth, mYear);
+
     }
 
     private void datePickerDialog(){
@@ -209,6 +236,10 @@ public class MainActivity extends AppCompatActivity {
                         tvJourneyDay.setText(dayOfWeek);
                         tvJourneyMonth.setText(MONTHS[monthOfYear]);
 
+
+                        dateStr = getDateString(dayOfMonth, monthOfYear+1, year);
+
+
                     }
                 }, mYear, mMonth, mDay);
         datePickerDialog.show();
@@ -221,5 +252,10 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    private String getDateString(int day, int month, int year){
+        String dateDay = (String.valueOf(day).length() == 1) ? ("0"+ day) : (""+day);
+        String dateMonth = (String.valueOf(month).length() == 1) ? ("0"+ month) : (""+month);
+        return dateDay + "-"+ dateMonth+ "-"+ year;
+    }
 
 }
