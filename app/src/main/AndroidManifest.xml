@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MawasalatiUserApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activities.ScheduledBusActivity"></activity>
+        <activity android:name=".view.activities.BookedActivity"></activity>
+        <activity android:name=".view.activities.ScheduledBusActivity" />
         <activity android:name=".view.activities.RegistrationActivity" />
         <activity android:name=".view.activities.LoginActivity" />
         <activity android:name=".view.activities.SplashActivity">
@@ -25,7 +26,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.activities.MainActivity"></activity>
+        <activity android:name=".view.activities.MainActivity" />
+        <activity android:name=".view.activities.BookingActivity" />
     </application>
 
 </manifest>

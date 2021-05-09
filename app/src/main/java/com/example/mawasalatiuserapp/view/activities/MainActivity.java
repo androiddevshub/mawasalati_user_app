@@ -1,16 +1,22 @@
 package com.example.mawasalatiuserapp.view.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     private HashMap<String, String> userDetails;
     private AppUtils appUtils;
     private TextView userName;
-    private Button btnLogout;
     private SearchableSpinner spinnerOriginCity, spinnerDestinationCity;
     private int mYear, mMonth, mDay, mHour, mMinute;
     private TextView tvWelcomeMsg;
@@ -61,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> originCityArrayList;
     ArrayList<String> destinationCityArrayList;
     private TextView tvJourneyDate, tvJourneyDay, tvJourneyMonth, tvJourneyToday;
+    private ImageView imageViewMenu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         userDetails = appUtils.getUserDetails();
 
 //        userName = findViewById(R.id.hello_message);
-        btnLogout = findViewById(R.id.btn_logout);
         cityListFun();
         String name = userDetails.get(AppUtils.KEY_USER_NAME);
         String token =  userDetails.get(AppUtils.KEY_USER_TOKEN);
@@ -85,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
         tvJourneyToday = findViewById(R.id.tv_journey_today);
         tvWelcomeMsg = findViewById(R.id.tv_welcome_msg);
         btnSearchBuses = findViewById(R.id.btn_search_buses);
+        imageViewMenu = findViewById(R.id.image_view_menu);
 
 
 
@@ -97,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         setTodayDate();
-        tvWelcomeMsg.setText("Welcome, "+ name + " : "+ token);
+        tvWelcomeMsg.setText("Welcome, "+ name);
 
         tvJourneyToday.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,12 +118,6 @@ public class MainActivity extends AppCompatActivity {
         tvJourneyDay.setOnClickListener(datePickerDialogOnClick);
         tvJourneyMonth.setOnClickListener(datePickerDialogOnClick);
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                appUtils.logoutUser();
-            }
-        });
 
         btnSearchBuses.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,9 +132,34 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+        imageViewMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.v("Chilling with buttom", "tell him ");
+                showPopup(v);
+            }
+        });
+
+
 
 
     }
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.getMenuInflater().inflate(R.menu.main_menu, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                appUtils.logoutUser();
+                return true;
+            }
+        });
+
+        popup.show();
+    }
+
+
 
     private AdapterView.OnItemSelectedListener onCityOriginSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
@@ -255,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
     private String getDateString(int day, int month, int year){
         String dateDay = (String.valueOf(day).length() == 1) ? ("0"+ day) : (""+day);
         String dateMonth = (String.valueOf(month).length() == 1) ? ("0"+ month) : (""+month);
-        return dateDay + "-"+ dateMonth+ "-"+ year;
+        return year + "-"+ dateMonth+ "-"+ dateDay;
     }
 
 }

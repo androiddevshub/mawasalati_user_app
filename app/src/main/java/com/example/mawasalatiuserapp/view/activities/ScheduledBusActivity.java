@@ -56,7 +56,7 @@ public class ScheduledBusActivity extends AppCompatActivity {
 
     private void getScheduledBusData(){
 
-        progressDialog.setMessage("Logging In");
+        progressDialog.setMessage("Loading Buses");
         progressDialog.show();
 
         NetworkAPI networkAPI = ApiClient.getClient().create(NetworkAPI.class);

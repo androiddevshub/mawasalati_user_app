@@ -14,8 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawasalatiuserapp.R;
 import com.example.mawasalatiuserapp.model.ScheduledBus;
+import com.example.mawasalatiuserapp.view.activities.BookingActivity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<ScheduledBusesRecyclerAdapter.ScheduledBusViewHolder> {
 
@@ -46,9 +50,23 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
 
         ScheduledBus scheduledBus = scheduledBusArrayList.get(position);
 
-        double finalBuildTime = scheduledBus.getDuration();
-        int hours = (int) finalBuildTime;
-        int minutes = (int) (finalBuildTime * 60) % 60;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+
+        try {
+            Date d1 = sdf.parse(scheduledBus.getDeparture_time());
+            Date d2 = sdf.parse(scheduledBus.getDeparture_time());
+            long difference_In_Time = d2.getTime() - d1.getTime();
+            double difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
+
+            double difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
+            holder.busJourneyDuration.setText(difference_In_Hours+"h "+ difference_In_Minutes+ "m");
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+//        double finalBuildTime = scheduledBus.getDuration();
+//        int hours = (int) finalBuildTime;
+//        int minutes = (int) (finalBuildTime * 60) % 60;
 
         holder.busName.setText(scheduledBus.getBus_name());
         holder.busOrigin.setText(scheduledBus.getOrigin());
@@ -57,17 +75,20 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
         holder.busDropPoint.setText(scheduledBus.getDrop_point());
         holder.busDepartureTime.setText(scheduledBus.getDeparture_time());
         holder.busArrivalTime.setText(scheduledBus.getArrival_time());
-        holder.busJourneyDuration.setText(hours+"h "+ minutes+ "m");
+
         holder.busSeats.setText(scheduledBus.getSeats()+ " Seats");
         holder.busFairPrice.setText("$"+ scheduledBus.getPrice());
 
 
-        holder.busRatingBar.setRating(Float.valueOf(scheduledBus.getRating()));
+//        holder.busRatingBar.setRating(Float.valueOf(scheduledBus.getRating()));
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(contex)
+                Toast.makeText(context, "I m being clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, BookingActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
         });
 

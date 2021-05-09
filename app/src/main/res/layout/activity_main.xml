@@ -7,6 +7,14 @@
     tools:context=".view.activities.MainActivity"
     android:background="#F8F8F8">
 
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/menu"
+        android:id="@+id/image_view_menu"
+        android:layout_margin="10dp"/>
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,21 +26,14 @@
         android:id="@+id/tv_welcome_msg"/>
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Logout"
-        android:layout_below="@id/tv_welcome_msg"
-        android:id="@+id/btn_logout"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"/>
+
 
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btn_logout"
+        android:layout_below="@id/tv_welcome_msg"
         android:background="@drawable/custom_border"
         android:gravity="center"
         android:id="@+id/search_city_view"
