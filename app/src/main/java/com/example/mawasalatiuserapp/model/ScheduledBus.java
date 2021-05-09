@@ -42,7 +42,7 @@ public class ScheduledBus implements Parcelable {
 
     @SerializedName("duration")
     @Expose
-    private Double duration;
+    private String duration;
 
     @SerializedName("seats")
     @Expose
@@ -120,11 +120,11 @@ public class ScheduledBus implements Parcelable {
         this.arrival_time = arrival_time;
     }
 
-    public Double getDuration() {
+    public String getDuration() {
         return duration;
     }
 
-    public void setDuration(Double duration) {
+    public void setDuration(String duration) {
         this.duration = duration;
     }
 
@@ -161,11 +161,7 @@ public class ScheduledBus implements Parcelable {
         drop_point = in.readString();
         departure_time = in.readString();
         arrival_time = in.readString();
-        if (in.readByte() == 0) {
-            duration = null;
-        } else {
-            duration = in.readDouble();
-        }
+        duration = in.readString();
         if (in.readByte() == 0) {
             seats = null;
         } else {
@@ -210,12 +206,7 @@ public class ScheduledBus implements Parcelable {
         dest.writeString(drop_point);
         dest.writeString(departure_time);
         dest.writeString(arrival_time);
-        if (duration == null) {
-            dest.writeByte((byte) 0);
-        } else {
-            dest.writeByte((byte) 1);
-            dest.writeDouble(duration);
-        }
+        dest.writeString(duration);
         if (seats == null) {
             dest.writeByte((byte) 0);
         } else {

@@ -59,7 +59,7 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
             double difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
 
             double difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
-            holder.busJourneyDuration.setText(difference_In_Hours+"h "+ difference_In_Minutes+ "m");
+
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -75,7 +75,7 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
         holder.busDropPoint.setText(scheduledBus.getDrop_point());
         holder.busDepartureTime.setText(scheduledBus.getDeparture_time());
         holder.busArrivalTime.setText(scheduledBus.getArrival_time());
-
+        holder.busJourneyDuration.setText(scheduledBus.getDuration());
         holder.busSeats.setText(scheduledBus.getSeats()+ " Seats");
         holder.busFairPrice.setText("$"+ scheduledBus.getPrice());
 
