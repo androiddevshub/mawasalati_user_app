@@ -5,41 +5,161 @@
     android:layout_height="wrap_content"
     android:layout_margin="5dp">
 
-    <RelativeLayout
-        android:layout_marginTop="15dp"
-        android:layout_marginLeft="15dp"
+    <LinearLayout
         android:layout_width="match_parent"
+        android:orientation="vertical"
         android:layout_marginBottom="15dp"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_centerVertical="true"
-            android:id="@+id/imageView_bus_details"
-            android:src="@drawable/ic_bus_icon"/>
 
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:id="@+id/rl_bus_details"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/imageView_bus_details"
+                android:src="@drawable/ic_bus_icon"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ABC Bus Trvels"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:id="@+id/tv_booked_bus_name_item"
+                android:layout_toRightOf="@id/imageView_bus_details"/>
+
+            <TextView
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2+1 AC Sleeper"
+                android:textSize="14sp"
+                android:id="@+id/tv_booked_bus_type_item"
+                android:layout_toRightOf="@id/imageView_bus_details"
+                android:layout_below="@id/tv_booked_bus_name_item"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"/>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ABC Bus Trvels"
-            android:textColor="@android:color/black"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:id="@+id/tv_booked_bus_name"
-            android:layout_toRightOf="@id/imageView_bus_details"/>
+            android:layout_marginTop="10dp"
+            android:id="@+id/ll_bus_journey_details"
+            android:weightSum="1">
 
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="14sp"
-            android:id="@+id/tv_booking_date"
-            android:layout_toRightOf="@id/imageView_bus_details"
-            android:layout_below="@id/tv_booked_bus_name"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="0.4">
 
-    </RelativeLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Origin"
+                    android:id="@+id/tv_booked_bus_origin_item"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22:00"
+                    android:id="@+id/tv_booked_bus_drop_time_item"
+                    android:textSize="22sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sun, 12 Jan"
+                    android:id="@+id/tv_booked_bus_start_date_item"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+
+                android:gravity="center"
+                android:layout_weight="0.2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="08h 05m"
+                    android:id="@+id/tv_booked_bus_duration_item"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginRight="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end"
+                android:layout_weight="0.4">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Destination"
+                    android:id="@+id/tv_booked_bus_destination_item"
+                    android:textSize="20sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="02:00"
+                    android:textSize="22sp"
+                    android:id="@+id/tv_booked_bus_pickup_time_item"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sun, 13 Jan"
+                    android:textSize="18sp"
+                    android:id="@+id/tv_booked_bus_end_date_item"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

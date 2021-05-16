@@ -35,6 +35,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -76,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
         appUtils = new AppUtils(getApplicationContext(), this);
         userDetails = appUtils.getUserDetails();
 
-//        userName = findViewById(R.id.hello_message);
         cityListFun();
         String name = userDetails.get(AppUtils.KEY_USER_NAME);
         String token =  userDetails.get(AppUtils.KEY_USER_TOKEN);
@@ -151,7 +151,15 @@ public class MainActivity extends AppCompatActivity {
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
-                appUtils.logoutUser();
+                switch(item.getItemId()) {
+                    case R.id.logout:
+                        appUtils.logoutUser();
+                        break;
+                    case R.id.bookings:
+                        Intent intent1 = new Intent(MainActivity.this, BookingListActivity.class);
+                        startActivity(intent1);
+                        break;
+                }
                 return true;
             }
         });
@@ -241,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
         tvJourneyDay.setText(dayOfWeek);
         tvJourneyMonth.setText(MONTHS[mMonth]);
 
-        dateStr = getDateString(mDay, mMonth, mYear);
+        dateStr = getDateString(mDay,mMonth+1, mYear);
 
     }
 
@@ -254,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
                                           int monthOfYear, int dayOfMonth) {
 
                         SimpleDateFormat simpledateformat = new SimpleDateFormat("EEEE");
-                        Date date = new Date(year, monthOfYear, dayOfMonth-1);
+                        Date date = new Date(year, monthOfYear, dayOfMonth);
                         String dayOfWeek = simpledateformat.format(date);
 
                         tvJourneyDate.setText(dayOfMonth+ "");

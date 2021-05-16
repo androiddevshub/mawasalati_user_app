@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RatingBar;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mawasalatiuserapp.R;
+import com.example.mawasalatiuserapp.model.Passenger;
 import com.example.mawasalatiuserapp.model.ScheduledBus;
 import com.example.mawasalatiuserapp.view.activities.BookingActivity;
 
@@ -20,12 +21,24 @@ import java.util.ArrayList;
 
 public class PassengerSetDetailsRecyclerAdapter extends RecyclerView.Adapter<PassengerSetDetailsRecyclerAdapter.PassengerSetDetailsViewHolder> {
 
-    private ArrayList<ScheduledBus> scheduledBusArrayList;
-    private Context context;
+    private onRecyclerViewItemClickListener mItemClickListener;
 
-    public PassengerSetDetailsRecyclerAdapter(ArrayList<ScheduledBus> scheduledBusArrayList, Context context) {
-        this.scheduledBusArrayList = scheduledBusArrayList;
+    public void setOnItemClickListener(onRecyclerViewItemClickListener mItemClickListener) {
+        this.mItemClickListener = mItemClickListener;
+    }
+
+    public interface onRecyclerViewItemClickListener {
+        void onItemClickListener(View view, int position);
+    }
+
+    private ArrayList<Passenger> passengerArrayList;
+    private Context context;
+    private String status;
+
+    public PassengerSetDetailsRecyclerAdapter(ArrayList<Passenger> passengerArrayList, Context context, String status) {
+        this.passengerArrayList = passengerArrayList;
         this.context = context;
+        this.status = status;
     }
 
     @NonNull
@@ -45,53 +58,47 @@ public class PassengerSetDetailsRecyclerAdapter extends RecyclerView.Adapter<Pas
     @Override
     public void onBindViewHolder(@NonNull PassengerSetDetailsViewHolder holder, int position) {
 
-        ScheduledBus scheduledBus = scheduledBusArrayList.get(position);
-        
+        Passenger passenger = passengerArrayList.get(position);
 
-        holder.passengerName.setText(scheduledBus.getBus_name());
-        holder.passengerAge.setText(scheduledBus.getOrigin());
-        holder.passengerGender.setText(scheduledBus.getDestination());
+        if (status == "created"){
+            holder.imgPassengerDelete.setVisibility(View.GONE);
+        }
 
-        holder.view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(context, "I m being clicked", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(context, BookingActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        });
+        holder.passengerName.setText(passenger.getName());
+        holder.passengerAge.setText(passenger.getAge());
+        holder.passengerGender.setText(passenger.getGender());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return scheduledBusArrayList.size();
+        return passengerArrayList.size();
     }
 
-    public class PassengerSetDetailsViewHolder extends RecyclerView.ViewHolder {
-        // Your holder should contain a member variable
-        // for any view that will be set as you render a row
-        public TextView passengerName, passengerAge, passengerGender;
+    public class PassengerSetDetailsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
+        public TextView passengerName, passengerAge, passengerGender;
+        public ImageView imgPassengerDelete;
         public View view;
-        // We also create a constructor that accepts the entire item row
-        // and does the view lookups to find each subview
+
         public PassengerSetDetailsViewHolder(View itemView) {
-            // Stores the itemView in a public final member variable that can be used
-            // to access the context from any ViewHolder instance.
+
             super(itemView);
             view = itemView;
             passengerName = (TextView) itemView.findViewById(R.id.tv_pd_name);
             passengerAge = (TextView) itemView.findViewById(R.id.tv_pd_age);
             passengerGender = (TextView) itemView.findViewById(R.id.tv_pd_gender);
+            imgPassengerDelete = (ImageView) itemView.findViewById(R.id.img_delete_passenger);
 
-
+            imgPassengerDelete.setOnClickListener(this);
 
         }
+        @Override
+        public void onClick(View v) {
+            if (mItemClickListener != null) {
+                mItemClickListener.onItemClickListener(v, getAdapterPosition());
+            }
+        }
     }
-
-
-
-
 }

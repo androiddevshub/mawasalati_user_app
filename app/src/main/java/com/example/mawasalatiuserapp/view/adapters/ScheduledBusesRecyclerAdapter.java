@@ -50,25 +50,26 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
 
         ScheduledBus scheduledBus = scheduledBusArrayList.get(position);
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+//        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
-        try {
-            Date d1 = sdf.parse(scheduledBus.getDeparture_time());
-            Date d2 = sdf.parse(scheduledBus.getDeparture_time());
-            long difference_In_Time = d2.getTime() - d1.getTime();
-            double difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
-
-            double difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
-
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Date d1 = sdf.parse(scheduledBus.getDeparture_time());
+//            Date d2 = sdf.parse(scheduledBus.getDeparture_time());
+//            long difference_In_Time = d2.getTime() - d1.getTime();
+//            double difference_In_Minutes = (difference_In_Time / (1000 * 60)) % 60;
+//
+//            double difference_In_Hours = (difference_In_Time / (1000 * 60 * 60)) % 24;
+//
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 
 //        double finalBuildTime = scheduledBus.getDuration();
 //        int hours = (int) finalBuildTime;
 //        int minutes = (int) (finalBuildTime * 60) % 60;
 
         holder.busName.setText(scheduledBus.getBus_name());
+        holder.tvBusDescription.setText(scheduledBus.getBus_type());
         holder.busOrigin.setText(scheduledBus.getOrigin());
         holder.busDestination.setText(scheduledBus.getDestination());
         holder.busPickUpPoint.setText(scheduledBus.getPickup_point());
@@ -88,6 +89,7 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
                 Toast.makeText(context, "I m being clicked", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, BookingActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("scheduledBus",scheduledBus);
                 context.startActivity(intent);
             }
         });
@@ -102,7 +104,7 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
     public class ScheduledBusViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView busName, busOrigin, busDestination, busPickUpPoint,
+        public TextView busName,tvBusDescription,  busOrigin, busDestination, busPickUpPoint,
                 busDropPoint, busDepartureTime, busArrivalTime, busJourneyDuration, busSeats, busFairPrice ;
 
         public RatingBar busRatingBar;
@@ -115,6 +117,7 @@ public class ScheduledBusesRecyclerAdapter extends RecyclerView.Adapter<Schedule
             super(itemView);
             view = itemView;
             busName = (TextView) itemView.findViewById(R.id.tv_bus_name);
+            tvBusDescription = (TextView) itemView.findViewById(R.id.tv_bus_desc);
             busOrigin = (TextView) itemView.findViewById(R.id.tv_bus_origin);
             busDestination = (TextView) itemView.findViewById(R.id.tv_bus_destination);
             busPickUpPoint = (TextView) itemView.findViewById(R.id.tv_bus_origin_pickup);

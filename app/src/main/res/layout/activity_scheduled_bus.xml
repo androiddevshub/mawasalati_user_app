@@ -7,9 +7,106 @@
     android:background="#F8F8F8"
     tools:context=".view.activities.ScheduledBusActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:id="@+id/ll_toolbar">
+
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/img_arrow_back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Origin"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/tv_scheduled_origin"/>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/right_arrow"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/imageview_arrow_right"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Destination"
+            android:layout_gravity="center_vertical"
+            android:textSize="20sp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@android:color/black"
+            android:id="@+id/tv_scheduled_destination"/>
+
+
+
+    </LinearLayout>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll_toolbar"
+
         android:id="@+id/scheduled_bus_recyclerview"/>
 
+
+
+    <RelativeLayout
+        android:id="@+id/rl_no_buses_found"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_below="@id/ll_toolbar">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/no_bus"
+            android:layout_marginTop="120dp"
+            android:id="@+id/img_no_bus"/>
+
+        <TextView
+            android:id="@+id/txt_no_buses_found"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/img_no_bus"
+            android:textStyle="bold"
+
+            android:textColor="@android:color/black"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Oops! No buses found."/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_no_buses_found"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="Single service on this route is full. Please search for another date or try again later."/>
+
+
+
+    </RelativeLayout>
+
+
+
 </RelativeLayout>
+
+

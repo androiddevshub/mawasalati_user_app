@@ -20,7 +20,7 @@
             android:src="@drawable/ic_arrow_back"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="10dp"
-            android:id="@+id/imageview_back"/>
+            android:id="@+id/imageView_back_arrow"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -100,6 +100,7 @@
                          android:layout_width="wrap_content"
                          android:layout_height="wrap_content"
                          android:text="2+1 Sleeper"
+                         android:id="@+id/tv_booking_bus_type"
                          android:layout_below="@id/tv_booking_bus_name"/>
 
                  </RelativeLayout>
@@ -112,13 +113,15 @@
                      android:weightSum="1">
 
                      <LinearLayout
+
                          android:layout_width="0dp"
                          android:layout_height="wrap_content"
                          android:layout_weight="0.3"
-                         android:gravity="center"
+                         android:layout_gravity="center_vertical"
                          android:orientation="vertical">
 
                          <LinearLayout
+
                              android:layout_width="match_parent"
                              android:layout_height="140dp"
                              android:orientation="vertical"
@@ -136,12 +139,14 @@
                                      android:layout_height="wrap_content"
                                      android:text="4:30 PM"
                                      android:textSize="17sp"
+                                     android:id="@+id/tv_booking_bus_pickup_time"
                                      android:textColor="@android:color/black"/>
 
                                  <TextView
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="Sun, 18 Apr"
+                                     android:id="@+id/tv_booking_bus_pickup_date"
                                      android:textSize="16sp"/>
 
                              </LinearLayout>
@@ -158,6 +163,7 @@
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="4 h 0m"
+                                     android:id="@+id/tv_booking_bus_journey_duration"
                                      android:textSize="14sp"/>
 
                              </LinearLayout>
@@ -174,6 +180,7 @@
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="4:30 PM"
+                                     android:id="@+id/tv_booking_bus_drop_time"
                                      android:textSize="17sp"
                                      android:textColor="@android:color/black"/>
 
@@ -181,6 +188,7 @@
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="Sun, 18 Apr"
+                                     android:id="@+id/tv_booking_bus_drop_date"
                                      android:textSize="16sp"/>
 
 
@@ -237,14 +245,18 @@
                                  android:layout_width="wrap_content"
                                  android:layout_height="wrap_content"
                                  android:layout_weight="0.5"
+                                 android:paddingTop="10dp"
                                  android:orientation="vertical">
 
                                  <TextView
+
                                      android:textStyle="bold"
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="Origin"
+                                     android:id="@+id/tv_booking_bus_origin"
                                      android:textSize="17sp"
+                                     android:layout_marginRight="20dp"
                                      android:textColor="@android:color/black"/>
 
                                  <TextView
@@ -252,15 +264,15 @@
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
                                      android:text="Origin Pickup point"
-
+                                     android:id="@+id/tv_booking_bus_origin_pickup"
                                      android:textSize="16sp"/>
 
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Sun, 18 Apr"
-                                     android:textColor="@android:color/darker_gray"
-                                     android:textSize="16sp"/>
+<!--                                 <TextView-->
+<!--                                     android:layout_width="wrap_content"-->
+<!--                                     android:layout_height="wrap_content"-->
+<!--                                     android:text="Sun, 18 Apr"-->
+<!--                                     android:textColor="@android:color/darker_gray"-->
+<!--                                     android:textSize="16sp"/>-->
 
                              </LinearLayout>
 
@@ -271,13 +283,15 @@
                                  android:layout_height="wrap_content"
                                  android:layout_weight="0.5"
                                  android:gravity="bottom"
+                                 android:paddingBottom="10dp"
                                  android:orientation="vertical">
 
                                  <TextView
                                      android:textStyle="bold"
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
-                                     android:text="4:30 PM"
+                                     android:text="Destination"
+                                     android:id="@+id/tv_booking_bus_destination"
                                      android:textSize="17sp"
                                      android:textColor="@android:color/black"/>
 
@@ -285,15 +299,17 @@
                                      android:textStyle="bold"
                                      android:layout_width="wrap_content"
                                      android:layout_height="wrap_content"
-                                     android:text="Sun, 18 Apr"
+                                     android:layout_marginRight="20dp"
+                                     android:id="@+id/tv_booking_bus_destination_drop"
+                                     android:text="Destination Drop point"
                                      android:textSize="16sp"/>
 
-                                 <TextView
-                                     android:layout_width="wrap_content"
-                                     android:layout_height="wrap_content"
-                                     android:text="Sun, 18 Apr"
-                                     android:textColor="@android:color/darker_gray"
-                                     android:textSize="16sp"/>
+<!--                                 <TextView-->
+<!--                                     android:layout_width="wrap_content"-->
+<!--                                     android:layout_height="wrap_content"-->
+<!--                                     android:text="Sun, 18 Apr"-->
+<!--                                     android:textColor="@android:color/darker_gray"-->
+<!--                                     android:textSize="16sp"/>-->
 
                              </LinearLayout>
 
@@ -334,7 +350,7 @@
                             android:layout_height="wrap_content"
                             android:text="Male"
                             android:textStyle="bold"
-                            android:id="@+id/radiobtn_male"/>
+                            android:id="@+id/radioBtn_male"/>
 
                         <RadioButton
                             android:textStyle="bold"
@@ -342,7 +358,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Female"
-                            android:id="@+id/radiobtn_female"/>
+                            android:id="@+id/radioBtn_female"/>
 
                     </RadioGroup>
 
@@ -371,6 +387,7 @@
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="5dp"
                         android:text="Add"
+                        android:id="@+id/btn_add_passenger"
                         android:textAllCaps="false"
                         android:layout_alignParentRight="true"/>
 
@@ -390,7 +407,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginBottom="10dp">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -409,21 +426,22 @@
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="@android:color/darker_gray"
+                        android:id="@+id/rl_line_5"
+                        android:layout_below="@+id/tv_passengers"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"/>
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
+                        android:layout_below="@id/rl_line_5"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
                         android:layout_marginBottom="10dp"
-                        tools:itemCount="2"
                         android:layout_marginTop="10dp"
-                        tools:listitem="@layout/layout_passenger_details"
-                        android:id="@+id/scheduled_bus_recyclerview"/>
+                        android:id="@+id/bus_passenger_recyclerView"/>
 
-                </LinearLayout>
+                </RelativeLayout>
 
 
             </androidx.cardview.widget.CardView>
@@ -433,7 +451,7 @@
                 app:cardCornerRadius="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/cardView__contact_details"
+                android:id="@+id/cardView_contact_details"
                 android:layout_below="@id/cardView_added_passengers">
 
                 <RelativeLayout
@@ -482,6 +500,143 @@
 
             </androidx.cardview.widget.CardView>
 
+            <androidx.cardview.widget.CardView
+                android:layout_below="@id/cardView_contact_details"
+                android:layout_width="match_parent"
+                android:id="@+id/cardView_booking_price"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Booking Price"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:layout_margin="10dp"
+                        android:id="@+id/tv_payment_details_txt"
+                        android:textColor="@android:color/black"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"/>
+
+
+
+                    <RelativeLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Base Fare"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_fair_traveller"/>
+
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="200"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_base_price_traveller"/>
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tax Fare"
+                            android:textSize="17sp"
+                            />
+
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_tax_fees"/>
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"/>
+
+
+                    <RelativeLayout
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Amount"
+                            android:textStyle="bold"
+                            android:textColor="@android:color/black"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:layout_alignParentRight="true"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="220"
+                            android:textSize="17sp"
+                            android:id="@+id/tv_total_price"/>
+
+
+
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@android:color/darker_gray"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"/>
+
+
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
 
         </RelativeLayout>
 
@@ -502,8 +657,9 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="$200"
+            android:text="$220"
             android:textStyle="bold"
+            android:id="@+id/tv_total_price_bold"
             android:gravity="center_vertical"
             android:textColor="@android:color/black"
             android:textSize="35sp"

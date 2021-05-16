@@ -9,13 +9,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/mawasalati_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/mawasalati_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MawasalatiUserApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activities.BookedActivity"></activity>
+        <activity android:name=".view.activities.BookingListActivity"></activity>
+        <activity android:name=".view.activities.BookedActivity" />
         <activity android:name=".view.activities.ScheduledBusActivity" />
         <activity android:name=".view.activities.RegistrationActivity" />
         <activity android:name=".view.activities.LoginActivity" />

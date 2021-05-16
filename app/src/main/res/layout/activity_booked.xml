@@ -14,13 +14,6 @@
         android:id="@+id/ll_toolbar">
 
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/imageview_back"/>
 
        <LinearLayout
            android:layout_marginTop="10dp"
@@ -35,17 +28,25 @@
                android:textSize="19sp"
                android:layout_marginLeft="20dp"
                android:textColor="@android:color/black"
-               android:id="@+id/tv_booking_id"/>
+               android:id="@+id/tv_booked_id"/>
 
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:text="Bookied on Sun, 12, Jan 10:18"
                android:textSize="15sp"
-               android:layout_marginLeft="20dp"
-               android:id="@+id/tv_booking_date"/>
+               android:id="@+id/tv_booked_bus_date"
+               android:layout_marginLeft="20dp"/>
 
        </LinearLayout>
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_home"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="130dp"
+            android:id="@+id/imageView_home"/>
 
     </LinearLayout>
 
@@ -70,34 +71,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <TextView
-                        android:textStyle="bold"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginBottom="15dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ticket No: 54854"
-                        android:id="@+id/tv_ticker_no"/>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_below="@id/tv_ticker_no"
-                        android:background="@android:color/darker_gray"
-                        android:layout_marginLeft="15dp"
-                        android:id="@+id/rl_line_1"
-                        android:layout_marginRight="15dp"/>
 
                     <ImageView
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="15dp"
-                        android:layout_below="@id/rl_line_1"
                         android:id="@+id/imageView_success"
                         android:src="@drawable/succes_icon"
-                        android:layout_marginBottom="10dp"/>
+
+                        android:layout_marginBottom="20dp"/>
 
 
                     <TextView
@@ -108,7 +92,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Booking Confirmed"
-                        android:layout_below="@id/rl_line_1"
                         android:layout_toRightOf="@id/imageView_success"
                         android:textColor="@android:color/black"
                         android:id="@+id/tv_booking_confirmed"/>
@@ -159,6 +142,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="KA 01 22323"
+                                android:id="@+id/tv_booked_bus_no"
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"/>
 
@@ -185,7 +169,7 @@
                                 android:layout_marginTop="20dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Bus No"
+                                android:text="Emergency Contacts"
                                 android:textStyle="bold"/>
 
                             <TextView
@@ -193,6 +177,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="42344234 42342343"
+                                android:id="@+id/tv_booked_bus_contacts"
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"/>
 
@@ -205,7 +190,6 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_below="@id/tv_ticker_no"
                         android:background="@android:color/darker_gray"
                         android:layout_marginLeft="15dp"
                         android:layout_marginRight="15dp"/>
@@ -246,7 +230,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Boarding Point"
                                 android:textSize="14sp"
-                                android:id="@+id/tv_boarding_place"
+                                android:id="@+id/tv_booked_bus_pickup"
                                 android:layout_toRightOf="@id/imageView_bus_origin"
                                 android:layout_below="@id/tv_boarding_point"/>
 
@@ -283,7 +267,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Boarding Point"
                                 android:textSize="14sp"
-                                android:id="@+id/tv_dropping_place"
+                                android:id="@+id/tv_booked_bus_drop"
                                 android:layout_toRightOf="@id/imageView_bus_destination"
                                 android:layout_below="@id/tv_dropping_point"/>
 
@@ -309,6 +293,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Origin"
+                                android:id="@+id/tv_booked_bus_origin"
                                 android:textSize="20sp"
                                 android:textStyle="bold"/>
 
@@ -316,6 +301,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="22:00"
+                                android:id="@+id/tv_booked_bus_pickup_time"
                                 android:textSize="22sp"
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"/>
@@ -324,6 +310,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Sun, 12 Jan"
+                                android:id="@+id/tv_booked_bus_start_date"
                                 android:textSize="18sp"
                                 android:textStyle="bold"/>
 
@@ -341,6 +328,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="08h 05m"
+                                android:id="@+id/tv_booked_bus_duration"
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"/>
 
@@ -359,6 +347,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Destination"
+                                android:id="@+id/tv_booked_bus_destination"
                                 android:textSize="20sp"
                                 android:textStyle="bold"/>
 
@@ -367,6 +356,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="02:00"
                                 android:textSize="22sp"
+                                android:id="@+id/tv_booked_bus_drop_time"
                                 android:textColor="@android:color/black"
                                 android:textStyle="bold"/>
 
@@ -375,6 +365,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Sun, 13 Jan"
                                 android:textSize="18sp"
+                                android:id="@+id/tv_booked_bus_end_date"
                                 android:textStyle="bold"/>
 
 
@@ -386,7 +377,6 @@
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:layout_below="@id/tv_ticker_no"
                         android:background="@android:color/darker_gray"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="10dp"
@@ -415,18 +405,18 @@
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:id="@+id/tv_boarding_bus_name"
+                            android:id="@+id/tv_booked_bus_name"
                             android:layout_toRightOf="@id/imageView_bus_details"/>
 
                         <TextView
                             android:layout_marginLeft="10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Boarding Point"
+                            android:text="2+1 AC Sleeper"
                             android:textSize="14sp"
-                            android:id="@+id/tv_boarding_bus_type"
+                            android:id="@+id/tv_booked_bus_type"
                             android:layout_toRightOf="@id/imageView_bus_details"
-                            android:layout_below="@id/tv_boarding_bus_name"/>
+                            android:layout_below="@id/tv_booked_bus_name"/>
 
                     </RelativeLayout>
 
@@ -452,7 +442,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Booking Details"
+                        android:text="Passenger Details"
                         android:textStyle="bold"
                         android:textSize="18sp"
                         android:layout_margin="10dp"
@@ -467,17 +457,6 @@
                         android:layout_marginRight="10dp"/>
 
 
-                    <TextView
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Passenger"
-                        android:textSize="14sp"
-                        android:id="@+id/tv_passenger_txt"
-                        android:layout_toRightOf="@id/imageView_bus_details"
-                        android:layout_below="@id/tv_boarding_bus_name"/>
-
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:layout_width="match_parent"
@@ -488,7 +467,15 @@
                         android:layout_marginBottom="10dp"
                         tools:itemCount="2"
                         tools:listitem="@layout/layout_passenger_details"
-                        android:id="@+id/scheduled_bus_recyclerview"/>
+                        android:id="@+id/booked_bus_passengers_recyclerview"/>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
+                        android:background="@android:color/darker_gray" />
 
                 </LinearLayout>
 
@@ -537,9 +524,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Base Fare (1 Traveller)"
+                            android:text="Base Fare"
                             android:textSize="17sp"
-                            android:id="@+id/tv_fair_traveller"/>
+                            android:id="@+id/tv_base_fair_txt"/>
 
                         <TextView
                             android:layout_alignParentRight="true"
@@ -547,7 +534,7 @@
                             android:layout_height="wrap_content"
                             android:text="$ 200"
                             android:textSize="17sp"
-                            android:id="@+id/tv_price_traveller"/>
+                            android:id="@+id/tv_base_fair_booked"/>
 
 
 
@@ -563,7 +550,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Base Fare (1 Traveller)"
+                            android:text="Tax Fare"
                             android:textSize="17sp"
                             />
 
@@ -571,21 +558,13 @@
                             android:layout_alignParentRight="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="$ 200"
+                            android:text="$ 20"
                             android:textSize="17sp"
-                            android:id="@+id/tv_tax_fees"/>
+                            android:id="@+id/tv_booked_tax_fees"/>
 
 
 
                     </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@android:color/darker_gray"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginRight="10dp"/>
 
 
                     <RelativeLayout
@@ -609,8 +588,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="$ 200"
+                            android:textStyle="bold"
                             android:textSize="17sp"
-                            android:id="@+id/tv_total_price"/>
+                            android:id="@+id/tv_total_faretv"/>
 
 
 
