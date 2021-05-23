@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MawasalatiUserApp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".view.activities.BookingListActivity"></activity>
+        <activity android:name=".view.activities.BookingListActivity" />
         <activity android:name=".view.activities.BookedActivity" />
         <activity android:name=".view.activities.ScheduledBusActivity" />
         <activity android:name=".view.activities.RegistrationActivity" />

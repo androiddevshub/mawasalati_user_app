@@ -135,13 +135,9 @@ public class MainActivity extends AppCompatActivity {
         imageViewMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.v("Chilling with buttom", "tell him ");
                 showPopup(v);
             }
         });
-
-
-
 
     }
 
@@ -172,7 +168,6 @@ public class MainActivity extends AppCompatActivity {
     private AdapterView.OnItemSelectedListener onCityOriginSelectedListener = new AdapterView.OnItemSelectedListener() {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
 
             origin = originCityArrayList.get(position);
         }
