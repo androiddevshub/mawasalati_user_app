@@ -163,8 +163,8 @@ public class BookedActivity extends AppCompatActivity {
             departureDate = format.parse(scheduledBus.getDeparture_date());
             arrivalDate = format.parse(scheduledBus.getArrival_date());
 
-            departureDateStr = WEEKS[departureDate.getDay() - 1] + ", "+ departureDate.getDate() + " "+ MONTHS[departureDate.getMonth()];
-            arrivalDateStr = WEEKS[arrivalDate.getDay() - 1] + ", "+ arrivalDate.getDate() + " "+ MONTHS[arrivalDate.getMonth()];
+            departureDateStr = WEEKS[departureDate.getDay()] + ", "+ departureDate.getDate() + " "+ MONTHS[departureDate.getMonth()];
+            arrivalDateStr = WEEKS[arrivalDate.getDay()] + ", "+ arrivalDate.getDate() + " "+ MONTHS[arrivalDate.getMonth()];
             tvBookedBusStartDate.setText(departureDateStr);
             tvBookedBusEndDate.setText(arrivalDateStr);
 

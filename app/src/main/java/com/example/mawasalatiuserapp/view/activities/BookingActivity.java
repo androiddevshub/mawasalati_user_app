@@ -143,6 +143,9 @@ public class BookingActivity extends AppCompatActivity {
                     passengerArrayList.add(passenger);
                     recyclerViewPassengers.setAdapter(passengerSetDetailsRecyclerAdapter);
                     passengerSetDetailsRecyclerAdapter.notifyDataSetChanged();
+                    etPassengerName.setText("");
+                    etPassengerAge.setText("");
+                    radioGroupPassengerType.clearCheck();
                     setBookingFareData();
                 }
             }
@@ -252,8 +255,8 @@ public class BookingActivity extends AppCompatActivity {
             departureDate = format.parse(scheduledBus.getDeparture_date());
             arrivalDate = format.parse(scheduledBus.getArrival_date());
 
-            departureDateStr = WEEKS[departureDate.getDay() - 1] + ", "+ departureDate.getDate() + " "+ MONTHS[departureDate.getMonth()];
-            arrivalDateStr = WEEKS[arrivalDate.getDay() - 1] + ", "+ arrivalDate.getDate() + " "+ MONTHS[arrivalDate.getMonth()];
+            departureDateStr = WEEKS[departureDate.getDay()] + ", "+ departureDate.getDate() + " "+ MONTHS[departureDate.getMonth()];
+            arrivalDateStr = WEEKS[arrivalDate.getDay()] + ", "+ arrivalDate.getDate() + " "+ MONTHS[arrivalDate.getMonth()];
 
             tvBusBookingDateOrigin.setText(departureDateStr);
             tvBusBookingDateDestination.setText(arrivalDateStr);
